@@ -41,6 +41,7 @@ class Homepge extends StatelessWidget {
             ),
           ],
           title: Text('Movies'),
+          centerTitle: true,
           bottom: _tabBar(_tabHeaders),
       ),
         body: _tabBarView(_tabPages),

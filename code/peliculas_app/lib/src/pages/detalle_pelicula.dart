@@ -6,7 +6,6 @@ import 'package:get/get.dart';
 import 'package:peliculas_app/src/controllers/now_playing_controller.dart';
 import 'package:peliculas_app/src/models/cast_model.dart';
 import 'package:peliculas_app/src/models/peliculas_nowplaying_model.dart';
-import 'package:peliculas_app/src/models/screenshots_model.dart';
 import 'package:peliculas_app/src/utils/utils.dart';
 import 'package:peliculas_app/src/widgets/bakground.dart';
 import 'package:peliculas_app/src/widgets/miboton.dart';
@@ -50,7 +49,8 @@ class DetallePelicula extends StatelessWidget {
                 child: Text('Screenshots', style: TextStyle(color: Colors.white, fontSize: 17.0, fontWeight: FontWeight.w500))
               ),
             ),
-            (_.gIsLoadingScreen) ? Center(child: CircularProgressIndicator())  : _listScreenShots(_.gModelScreen)
+            // _listScreenShots(_.gModelScreen)
+            _texttriste()
           ],
         ),
       ),
@@ -194,24 +194,30 @@ class DetallePelicula extends StatelessWidget {
     );
   }
 
-  Widget _listScreenShots(ScreenShootsModel screenModel) {
-    return Container(
-      height: Utils.porcientoH(Get.context, 20),
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: 10,
-        itemBuilder: (BuildContext context, int i) {
-          return Container(
-      height: Utils.porcientoH(Get.context, 20),
-      child: ClipRRect(
-                  borderRadius: BorderRadius.circular(20.0),
-                  child: Image.network('${Utils.urlImg}${Utils.urlImg}${screenModel.backdrops[i].filePath}', 
-                    fit: BoxFit.cover
-                  ),
-      ),
-    );
-        }
-      ),
+  // Widget _listScreenShots(ScreenShootsModel screenModel) {
+  //   return Container(
+  //     height: Utils.porcientoH(Get.context, 20),
+  //     child: ListView.builder(
+  //       scrollDirection: Axis.horizontal,
+  //       itemCount: 10,
+  //       itemBuilder: (BuildContext context, int i) {
+  //         return Container(
+  //     height: Utils.porcientoH(Get.context, 20),
+  //     child: ClipRRect(
+  //                 borderRadius: BorderRadius.circular(20.0),
+  //                 child: Image.network('${Utils.urlImg}${Utils.urlImg}${screenModel.backdrops[i].filePath}', 
+  //                   fit: BoxFit.cover
+  //                 ),
+  //     ),
+  //   );
+  //       }
+  //     ),
+  //   );
+  // }
+
+  Widget _texttriste() {
+    return Center(
+      child: Text('No me dio tiempo de consumir los screenshoots =(', style: TextStyle(color:Colors.white),),
     );
   }
 
